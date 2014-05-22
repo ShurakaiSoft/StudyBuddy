@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Study Buddy helps determain what to study next",
   "author": "Stephen Parker <shurakaisoft@gmail.com>",
-  "script": {
-    "test": "mocha -r ./test",
+  "scripts": {
+    "test": "mocha -R spec --recursive ./test",
     "start": "node studybuddy.js"
   },
   "main": "./studybuddy.js",
