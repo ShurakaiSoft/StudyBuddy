@@ -3,17 +3,17 @@
  */
 
 // dependencies
-var	bookshelf = require('./topics/bookshelf'),
+var	bookshelf = require('./content/bookshelf'),
 	selector = require('./lib/selector'),
 	random = require('./lib/random'),
-	books = require('./topics/books');
+	topics = require('./lib/topics');
 
 
 // wire all dependencies together to create the application
-var topics, topic;
+var topicList, topicsAddedCount;
 
-topics = selector.create(random.randomNumberGenerator);
-topics.add(books.getTopics(bookshelf));
-topic = topics.choose();
+topicList = selector.create(random.randomNumberGenerator);
+topicsAddedCount = topicList.add(topics.getTopicsFromBooks(bookshelf, topicList.createTopic));
 
-console.log("You should study", topic || 'Warning: no topics available!');
+console.log("Added", topicsAddedCount, "from bookshelf");
+console.log("You should study:", topicList.choose() || 'Warning: no topics available!');
